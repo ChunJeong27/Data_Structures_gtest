@@ -107,4 +107,8 @@ Temporary Items
 # CMake build Files
 build/
 
+# Visual Studio Code Files
+*.dSYM/
+*.out
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,c++,cmake
