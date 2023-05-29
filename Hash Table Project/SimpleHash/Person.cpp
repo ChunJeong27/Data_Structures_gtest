@@ -1,6 +1,6 @@
 #include "Person.hpp"
 #include <iostream>
-#include <string>
+#include <cstring>
 
 int Person::getSSN()
 {
@@ -14,7 +14,7 @@ void Person::showPerInfo()
     std::cout << "주소: " << this->addr << '\n' << std::endl;
 }
 
-Person* Person::makePersonData(int ssn, char* name, char* addr)
+Person* Person::makePersonData(int ssn, const char* name, const char* addr)
 {
     Person* newP = new Person();
     newP->ssn = ssn;

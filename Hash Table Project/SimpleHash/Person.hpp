@@ -8,7 +8,7 @@ class Person
 public:
     int getSSN();
     void showPerInfo();
-    Person* makePersonData(int ssn, char* name, char* addr);
+    Person* makePersonData(int ssn, const char* name, const char* addr);
 
 private:
     int ssn;
