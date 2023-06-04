@@ -38,3 +38,33 @@ void BTreeNode::makeRightSubTree(BTreeNode* sub)
 
     this->right = sub;
 }
+
+void BTreeNode::preorderTraverse(BTreeNode* bt, VisitFunc action)
+{
+    if(bt == nullptr)
+        return;
+    
+    action(bt->data);
+    preorderTraverse(bt->left, action);
+    preorderTraverse(bt->right, action);
+}
+
+void BTreeNode::inorderTraverse(BTreeNode* bt, VisitFunc action)
+{
+    if(bt == nullptr)
+        return;
+    
+    inorderTraverse(bt->left, action);
+    action(bt->data);
+    inorderTraverse(bt->right, action);
+}
+
+void BTreeNode::postorderTraverse(BTreeNode* bt, VisitFunc action)
+{
+    if(bt == nullptr)
+        return;
+    
+    postorderTraverse(bt->left, action);
+    postorderTraverse(bt->right, action);
+    action(bt->data);
+}

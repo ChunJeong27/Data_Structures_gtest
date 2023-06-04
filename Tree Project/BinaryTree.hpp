@@ -1,9 +1,12 @@
 #ifndef __BINARY_TREE_H__
 #define __BINARY_TREE_H__
 
+#include <iostream>
+
 class BTreeNode
 {
     using BTData = int;
+    using VisitFunc = void (*)(BTData data);
 
 public:
     BTreeNode();
@@ -16,6 +19,10 @@ public:
 
     void makeLeftSubTree(BTreeNode* sub);
     void makeRightSubTree(BTreeNode* sub);
+
+    static void preorderTraverse(BTreeNode* bt, VisitFunc action);
+    static void inorderTraverse(BTreeNode* bt, VisitFunc action);
+    static void postorderTraverse(BTreeNode* bt, VisitFunc action);
 
 private:
     BTData data;
