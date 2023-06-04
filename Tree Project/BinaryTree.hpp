@@ -10,6 +10,7 @@ public:
     BTData getData();
     void setData(BTData data);
 
+    // To do: 4개의 함수를 레퍼런스 반환으로 변경할 것
     BTreeNode* getLeftSubTree();
     BTreeNode* getRightSubTree();
 

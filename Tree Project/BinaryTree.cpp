@@ -1,6 +1,6 @@
 #include "BinaryTree.hpp"
 
-BTreeNode::BTreeNode() : left(nullptr), right(nullptr)
+BTreeNode::BTreeNode() : data(0), left(nullptr), right(nullptr)
 { }
 
 BTreeNode::BTData BTreeNode::getData()
@@ -26,7 +26,7 @@ BTreeNode* BTreeNode::getRightSubTree()
 void BTreeNode::makeLeftSubTree(BTreeNode* sub)
 {
     if(this->left != nullptr)
-        //free(this->left);
+        delete this->left;
 
     this->left = sub;
 }
@@ -34,7 +34,7 @@ void BTreeNode::makeLeftSubTree(BTreeNode* sub)
 void BTreeNode::makeRightSubTree(BTreeNode* sub)
 {
     if(this->right != nullptr)
-        //free(this->right);
+        delete this->right;
 
     this->right = sub;
 }
