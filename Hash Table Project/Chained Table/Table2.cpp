@@ -5,7 +5,7 @@
 Table::Table(HashFunc f)
 {
     for (int i = 0; i < MAX_TBL; i++)
-        LinkedList();
+        this->tbl[i] = LinkedList();
 
         this->hf = f;
 }
@@ -21,29 +21,55 @@ void Table::insert(Key k, Value v)
         return;
     }
     else
-        &(this->tb1[hv])->insert(ns);
-
+        this->tbl[hv].insert(ns);
 }
 
 Value Table::remove(Key k)
 {
     int hv = this->hf(k);
+    Slot cSlot;
 
-    if((this->tb1[hv].status != SlotStatus::INUSE))
-        return nullptr;
-    else
+    if(tbl[hv].first(&cSlot))
     {
-        (this->tb1[hv]).status = SlotStatus::DELETED;
-        return (this->tb1[hv]).val;
+        if(cSlot.key == k)
+        {
+            tbl[hv].remove();
+            return cSlot.val;
+        }
+        else
+        {
+            while(tbl[hv].next(&cSlot))
+            {
+                if(cSlot.key == k)
+                {
+                    tbl[hv].remove();
+                    return cSlot.val;
+                }
+            }
+        }
     }
+
+    return nullptr;
 }
 
 Value Table::search(Key k)
 {
     int hv = this->hf(k);
+    Slot cSlot;
 
-    if((this->tb1[hv]).status != SlotStatus::INUSE)
-        return nullptr;
-    else
-        return (this->tb1[hv]).val;
+    if(tbl[hv].first(&cSlot))
+    {
+        if(cSlot.key == k)
+            return cSlot.val;
+        else
+        {
+            while(tbl[hv].next(&cSlot))
+            {
+                if(cSlot.key == k)
+                    return cSlot.val;
+            }
+        }
+    }
+
+    return nullptr;
 }

@@ -17,7 +17,7 @@ public:
     LinkedList();
     void insert(LData data);
     
-    void first(LData* pdata);
+    int first(LData* pdata);
     int next(LData* pdata);
 
     LData remove();
