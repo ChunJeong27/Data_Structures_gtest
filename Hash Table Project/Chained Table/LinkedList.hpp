@@ -1,7 +1,9 @@
 #ifndef __D_LINKED_LIST_H__
 #define __D_LINKED_LIST_H__
 
-using LData = int;
+#include "Slot2.hpp"
+
+using LData = Slot;
 
 struct Node
 {

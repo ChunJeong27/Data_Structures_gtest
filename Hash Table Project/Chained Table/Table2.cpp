@@ -1,10 +1,11 @@
-#include "Table.hpp"
+#include "Table2.hpp"
+#include "LinkedList.hpp"
 #include <iostream>
 
 Table::Table(HashFunc f)
 {
     for (int i = 0; i < MAX_TBL; i++)
-        (this->tb1[i]).status = SlotStatus::EMPTY;
+        LinkedList();
 
         this->hf = f;
 }
@@ -12,9 +13,16 @@ Table::Table(HashFunc f)
 void Table::insert(Key k, Value v)
 {
     int hv = this->hf(k);
-    this->tb1[hv].val = v;
-    this->tb1[hv].key = k;
-    this->tb1[hv].status = SlotStatus::INUSE;
+    Slot ns = {k, v};
+
+    if(search(k) != nullptr)
+    {
+        std::cout << "키 중복 오류 발생" << std::endl;
+        return;
+    }
+    else
+        &(this->tb1[hv])->insert(ns);
+
 }
 
 Value Table::remove(Key k)
