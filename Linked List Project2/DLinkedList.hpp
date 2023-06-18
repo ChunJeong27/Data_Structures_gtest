@@ -2,25 +2,26 @@
 #define __D_LINKED_LIST_H__
 
 
+using LData = int;
+
+class Node
+{
+public:
+    Node() : next(nullptr)
+    { };
+
+    LData data;
+    struct Node* next;
+};
+
 class LinkedList
 {
-private:
-    using LData = int;
-
-    struct Node
-    {
-        LData data;
-        struct Node* next;
-    };
-
-    using List = LinkedList;
-
 public:
     LinkedList();
     void insert(LData data);
 
-    int first(LData* pdata);
-    int next(LData* pdata);
+    bool first(LData* pdata);
+    bool next(LData* pdata);
 
     LData remove();
     int count();
@@ -34,6 +35,11 @@ private:
     int numOfData;
     int (*comp)(LData d1, LData d2);
 
+    void firstInsert(LData data);
+    void searchInsert(LData data);
+
 };
+
+using List = LinkedList;
 
 #endif  // D_LINKED_LIST_H__
