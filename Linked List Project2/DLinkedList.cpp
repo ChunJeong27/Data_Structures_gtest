@@ -44,7 +44,7 @@ void LinkedList::insert(LData data)
 
 bool LinkedList::first(LData* pdata)
 {
-    if(this->comp == nullptr)
+    if(this->head->next == nullptr)
         return false;
     
     this->before = this->head;
