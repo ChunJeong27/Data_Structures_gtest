@@ -1,6 +1,7 @@
 #ifndef __D_LINKED_LIST_H__
 #define __D_LINKED_LIST_H__
 
+#include <functional>
 
 using LData = int;
 
@@ -26,14 +27,16 @@ public:
     LData remove();
     int count();
 
-    void setSortRule(int (*comp)(LData d1, LData d2));
+    //void setSortRule(int (*comp)(LData d1, LData d2));
+    void setSortRule(std::function<int(LData, LData)> comp);
 
 private:
     Node* head;
     Node* cur;
     Node* before;
     int numOfData;
-    int (*comp)(LData d1, LData d2);
+    //int (*comp)(LData d1, LData d2);
+    std::function<int(LData, LData)> comp;
 
     void firstInsert(LData data);
     void searchInsert(LData data);

@@ -84,7 +84,12 @@ int LinkedList::count()
     return this->numOfData;
 }
 
-void LinkedList::setSortRule(int (*comp)(LData d1, LData d2))
+// void LinkedList::setSortRule(int (*comp)(LData d1, LData d2))
+// {
+//     this->comp = comp;
+// }
+
+void LinkedList::setSortRule(std::function<int(LData, LData)> comp)
 {
     this->comp = comp;
 }
