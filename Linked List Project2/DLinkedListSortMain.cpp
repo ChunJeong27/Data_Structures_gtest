@@ -1,20 +1,21 @@
 #include <iostream>
 #include "DLinkedList.hpp"
 
-int WhoIsPrecede(int d1, int d2)
-{
-    if(d1 > d2)
-        return 0;
-    else
-        return 1;
-}
 
 int main(void)
 {
+    auto const WhoIsPrecede = [](int d1, int d2)
+    {
+        if(d1 > d2)
+            return 0;
+        else
+            return 1;
+    };
+
     List list;
     int data;
 
-    list.setSortRule(&WhoIsPrecede);
+    list.setSortRule(WhoIsPrecede);
 
     list.insert(11);    list.insert(11);
     list.insert(22);    list.insert(22);
