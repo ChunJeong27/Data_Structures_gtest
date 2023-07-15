@@ -1,5 +1,6 @@
 #include <iostream>
-#include "ArrayBaseStack.hpp"
+//#include "ArrayBaseStack.hpp"
+#include "ListBaseStack.hpp"
 
 int main(void)
 {
@@ -12,14 +13,17 @@ int main(void)
     stack.push(5);
 
     // 데이터 꺼내기
-    while(!stack.isEmpty()){
-        std::cout << "using peek() function" << std::endl;
-        std::cout << stack.peek() << std::endl;
+    // while(!stack.isEmpty()){
+    //     std::cout << "using peek() function" << std::endl;
+    //     std::cout << stack.peek() << std::endl;
 
-        std::cout << "using pop() function" << std::endl;
-        std::cout << stack.pop() << std::endl;
-    }
-    std::cout << '\n';
+    //     std::cout << "using pop() function" << std::endl;
+    //     std::cout << stack.pop() << std::endl;
+    // }
+    // std::cout << '\n';
+
+    while(!stack.isEmpty())
+        std::cout << stack.pop() << ' ';
 
     return 0;
 }
